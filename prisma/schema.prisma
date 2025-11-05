@@ -15,14 +15,27 @@ datasource db {
 }
 
 model User{
-  id  @id @default(autoincrement())
+  id         Int    @id @default(autoincrement())
   firstname  String 
   lastname   String
   email      String @unique
   password   String
+  watchItems WatchItem[]
 }
-model Watchlist{
-  email 
-  
 
+model WatchItem {
+  id        Int      @id @default(autoincrement())
+  title     String   // name of the show or movie
+  status    Status   // whether it's in watchlist, favourite, or watched
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  
 }
+
+enum Status {
+  WATCHED
+  FAVOURITES
+  WATCHLIST
+}
+
+
