@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import axios from "axios"
 
 function Signup(){
     const [form,setForm] =useState({
@@ -12,6 +13,17 @@ function Signup(){
 
     function handleChange(e){
         setForm((prev)=>({...prev,[e.target.name]:e.target.value}))
+    }
+    async function handleSubmit(){
+        try{
+            const res= await axios.post("http://localhost:3000/signup",form)
+            if(res.status===201){
+                return console.log("signup successfull")
+            }
+        }
+        catch(error){
+            console.log("failed to signup", error)
+        }
     }
 
 

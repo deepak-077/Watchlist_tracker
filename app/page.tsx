@@ -10,9 +10,9 @@ const movies =[
 
 export default function Home() {
   return (
-    <div>
-      <div className="flex bg-red text-black bg-red-400 gap-2 justify-around">
-        <h1 className="  text-6xl font-semibold text-center">Movies Tracker</h1>
+    <div className="flex flex-col gap-3">
+      <div className="flex bg-red text-black bg-red-400 gap-2 justify-around p-2">
+        <h1 className="  text-6xl font-semibold text-center ">Movies Tracker</h1>
         
         <div className="flex gap-2">
           <button className="rounded-4xl p-4 bg-black text-white"> signup </button>
