@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import axios from "axios"
+import { useRouter } from "next/navigation"
 
 function Login(){
     const [credentials,setCredentials]=useState({
@@ -14,11 +15,15 @@ function Login(){
         }))
     }
 
+    const router=useRouter();
+
     async function handleLogin(){
         try{
-            const res = await axios.post("http://localhost:3000/login",credentials)
+            const res = await axios.post("http://localhost:3001/login",credentials)
             if(res.status===200) {
                 console.log("login succesfull")
+                router.push("/landing")
+
             }
 
         }
@@ -33,7 +38,7 @@ function Login(){
            <div className="flex flex-col gap-2">
             <input className="border border-amber-500 rounded-2xl p-2 text-3xl" type="text" placeholder="Email" name="email" onChange={handleChange}/>
            <input className="border border-amber-500 rounded-2xl p-2 text-3xl"  type="password" placeholder="Password" name="password" onChange={handleChange}/>
-           <button className="bg-lime-300 rounded-4xl p-1 text-3xl">submit</button>
+           <button className="bg-lime-300 rounded-4xl p-1 text-3xl" onClick={handleLogin}>submit</button>
             
            </div>
             
