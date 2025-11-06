@@ -1,4 +1,7 @@
+"use client"
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
 const movies =[
   {id:1,title:"Money Heist",img:"money_heist.jpg"},
   {id:2,title:"13 Reasons Why",img:"13 reasons why.jpg"},
@@ -8,15 +11,17 @@ const movies =[
   {id:6,title:"Harry Potter",img:"harry potter.webp"}
 ]
 
+
 export default function Home() {
+  const router=useRouter();
   return (
     <div className="flex flex-col gap-3">
       <div className="flex bg-red text-black bg-red-400 gap-2 justify-around p-2">
         <h1 className="  text-6xl font-semibold text-center ">Movies Tracker</h1>
         
         <div className="flex gap-2">
-          <button className="rounded-4xl p-4 bg-black text-white"> signup </button>
-          <button className="rounded-4xl p-4 bg-black text-white"> login </button>
+          <button className="rounded-4xl p-4 bg-black text-white" onClick={()=>{router.push("/signup")}}> signup </button>
+          <button className="rounded-4xl p-4 bg-black text-white" onClick={()=>{router.push("/login")}}> login </button>
         </div>
         
 

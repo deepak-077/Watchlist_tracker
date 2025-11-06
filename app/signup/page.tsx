@@ -4,7 +4,7 @@ import { useState } from "react"
 import axios from "axios"
 
 function Signup(){
-    const [form,setForm] =useState({
+    const [details,setDetails] =useState({
         firstname:"",
         lastname:"",
         email:"",
@@ -12,11 +12,11 @@ function Signup(){
     })
 
     function handleChange(e){
-        setForm((prev)=>({...prev,[e.target.name]:e.target.value}))
+        setDetails((prev)=>({...prev,[e.target.name]:e.target.value}))
     }
     async function handleSubmit(){
         try{
-            const res= await axios.post("http://localhost:3000/signup",form)
+            const res= await axios.post("http://localhost:3001/signup",details)
             if(res.status===201){
                 return console.log("signup successfull")
             }
@@ -36,9 +36,7 @@ function Signup(){
            
             <input className="border border-amber-500 rounded-2xl p-2 text-3xl" type="text" placeholder="Email" name="email" onChange={handleChange}/>
            <input className="border border-amber-500 rounded-2xl p-2 text-3xl"  type="password" placeholder="Password" name="password" onChange={handleChange}/>
-           <button className="bg-lime-300 rounded-4xl p-1 text-3xl" onClick={()=>{
-            console.log("hi", form.firstname+" " +form.lastname)
-           }}>submit</button>
+           <button className="bg-lime-300 rounded-4xl p-1 text-3xl" onClick={handleSubmit}>submit</button>
             
            </div>
             
