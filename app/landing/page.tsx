@@ -1,8 +1,51 @@
 "use client"
 import { Clock } from "@/components/Clock"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 function Landing(){
     const router=useRouter()
+
+    async function handleWatchlist(){
+        try{
+            const response=await axios.get("http://localhost:3001/watchlist")
+            if(response){
+                console.log("here is your watchlist")
+            }
+
+        }
+        catch(error){
+            console.log("failed to fetch data", error)
+        }
+
+    }
+
+    async function handleWatched(){
+        try{
+            const response=await axios.get("http://localhost:3001/watched")
+            if(response){
+                console.log("here are your watched movies/tv shows ")
+            }
+
+        }
+        catch(error){
+            console.log("failed to fetch data", error)
+        }
+
+    }
+
+    async function handleFavourites(){
+        try{
+            const response=await axios.get("http://localhost:3001/favourites")
+            if(response){
+                console.log("here are your favourite movies/tv shows")
+            }
+
+        }
+        catch(error){
+            console.log("failed to fetch data", error)
+        }
+
+    }
     return (
         <div className="text-6xl ">
 
