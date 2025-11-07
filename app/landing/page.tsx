@@ -11,12 +11,10 @@ function Landing(){
             if(response){
                 console.log("here is your watchlist")
             }
-
         }
         catch(error){
             console.log("failed to fetch data", error)
         }
-
     }
 
     async function handleWatched(){
@@ -25,12 +23,10 @@ function Landing(){
             if(response){
                 console.log("here are your watched movies/tv shows ")
             }
-
         }
         catch(error){
             console.log("failed to fetch data", error)
         }
-
     }
 
     async function handleFavourites(){
@@ -39,12 +35,10 @@ function Landing(){
             if(response){
                 console.log("here are your favourite movies/tv shows")
             }
-
         }
         catch(error){
             console.log("failed to fetch data", error)
         }
-
     }
     return (
         <div className="text-6xl ">
