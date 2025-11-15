@@ -19,6 +19,7 @@ function Landing(){
     const [favourites,setFavourites] = useState([])
     const [watchlist,setWatchlist] = useState([])
     const [token, setToken] = useState(null)
+    const [list,setList] =useState([]);
 
     useEffect (() => {
         // Check if we are in the browser before accessing localStorage
@@ -84,6 +85,7 @@ function Landing(){
                 console.log("No movies in your watchlist.");
             }
             else{
+                setList(response.data);
                 console.log("your Watchlist is ",response.data)
             }
         }
@@ -101,6 +103,7 @@ function Landing(){
                 console.log("No movies in your watchlist.");
             }
             else{
+                setList(response.data);
                 console.log("your Watchedlist is ",response.data)
             }
             
@@ -119,6 +122,7 @@ function Landing(){
                 console.log("No movies in your watchlist.");
             }
             else{
+                setList(response.data);
                 console.log("your favourites list is ",response.data)
             }
         }
@@ -165,6 +169,17 @@ function Landing(){
                     </div>
                     <div>
                         <Clock/>
+                    </div>
+                    <div>{ list.length> 0 ? (list.map((item,index) => (
+                        <div>
+                            <div>{item.status}</div>
+                            <div>{item.title}</div>
+                            
+                        </div>
+                    ))):(
+                        <div> list is empty </div>
+                    )}
+
                     </div>
                     
                 </div>
