@@ -8,13 +8,11 @@ function Login(){
         email:"",
         password:"",
     })
-
     function handleChange(e){
         setCredentials((prev)=>({
             ...prev, [e.target.name]:e.target.value
         }))
     }
-
     const router=useRouter();
 
     async function handleLogin(){
@@ -22,16 +20,14 @@ function Login(){
             const res = await axios.post("http://localhost:3001/login",credentials)
             if(res.status===200) {
                 console.log("login succesfull")
+                localStorage.setItem("token",res.data.token)
                 router.push("/landing")
-
             }
-
         }
         catch(error){
             console.log("failed to login",error)
         }
     }
-
     return(
         <div className="bg-black text-6xl text-white h-screen flex  flex-col justify-center items-center gap-3">
            <h1 className=""> Login Form </h1> 

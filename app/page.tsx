@@ -14,57 +14,7 @@ const movies =[
 ]
 
 export default function Home() {
-  const [watched,setWatched]=useState([])
-  const [favourites,setFavourites]=useState([])
-  const [watchlist,setWatchlist]=useState([])
-
-async function addFavourites(title){
-
-  const updatedfavourites= [...favourites,title]
-      setFavourites(updatedfavourites)
-
-        try{
-            const response=await axios.post("http://localhost:3001/favourites",updatedfavourites )
-            if(response.status===200){
-                console.log("here are your favourite movies/tv shows",response.data)
-            }
-        }
-        catch(error){
-            console.log("failed to fetch data", error)
-        }
-    }
-
-    async function addWatchlist(title){
-      const updatedWatchlist= [...watchlist,title]
-      setWatchlist(updatedWatchlist)
-
-      try{
-        const response=await axios.post("http://localhost:3001/watchlist",updatedWatchlist)
-        if(response.status===200){
-          console.log("added to your watchlist")
-        }
-
-      }
-      catch(error){
-        console.log("failed to add",error)
-      }
-    }
-
-    async function addwatched(title){
-      const updatedWatched= [...watched,title]
-      setWatched(updatedWatched)
-
-      try{
-        const response=await axios.post("http://localhost:3001/watched",updatedWatched)
-        if(response.status===200){
-          console.log("added to watched")
-        }
-      }
-      catch(error){
-        console.log("failed to add",error)
-      }
-    }
-
+  
   const router=useRouter();
   return (
     <div className="flex flex-col gap-3">
