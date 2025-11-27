@@ -29,7 +29,6 @@ model WatchItem {
   status    Status   // whether it's in watchlist, favourite, or watched
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  
 }
 
 enum Status {

@@ -29,7 +29,7 @@ export default function Home() {
       </div>
       <div className="flex flex-wrap gap-4 justify-center">
         {movies.map((item,index)=>(
-          <div >
+          <div>
             <img className="size-[300px]" src={item.img} alt="" />
             <div className="flex gap-1">
               <button className="bg-lime-400 rounded-2xl p-1 text-sm" onClick={()=>addwatched(item.title)}>Watched</button>

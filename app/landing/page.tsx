@@ -15,9 +15,6 @@ const movies =[
 
 function Landing(){
 
-    const [watched,setWatched] = useState([])
-    const [favourites,setFavourites] = useState([])
-    const [watchlist,setWatchlist] = useState([])
     const [token, setToken] = useState(null)
     const [list,setList] =useState([]);
 
@@ -36,7 +33,6 @@ function Landing(){
                     {headers:{Authorization:`Bearer ${token}`}}
                  )
                 console.log(response.data.msg)
-                setFavourites( response.data )
             }
             catch(error){
                 console.log("failed to fetch data", error)
@@ -50,7 +46,6 @@ function Landing(){
                 { headers:{Authorization:`Bearer ${token}`}}
             )
             console.log(response.data.msg);
-            setWatchlist(response.data)
           }
           catch(error){
             console.log("failed to add",error)
@@ -64,7 +59,6 @@ function Landing(){
                 { headers:{Authorization:`Bearer ${token}`} }
             )
             console.log(response.data.msg);
-            setWatched(response.data)
           }
           catch(error){
             console.log("failed to add",error)
@@ -179,16 +173,9 @@ function Landing(){
                     ))):(
                         <div> list is empty </div>
                     )}
-
                     </div>
-                    
                 </div>
-
             </div>
-
-            
-            
-
         </div>
     )
 
